@@ -38,7 +38,7 @@ namespace GestorDeEstudiantes.LogicaDeNegocios
         {
             Estudiante elEstudianteAMostrar = ListaDeEstudiantes.Find(estudianteBuscado => estudianteBuscado.Carne == carneDelEstudiante);
             string datosAMostrar;
-            string unMensaje = "Este estudiante no existe";
+            string unMensaje = "Ocurrió un error al procesar su operación, puede que el carné consultado esté incorrecto o que aún no existan datos. Intente nuevamente.";
 
             if (elEstudianteAMostrar != null)
             {
@@ -76,6 +76,10 @@ namespace GestorDeEstudiantes.LogicaDeNegocios
             {
                 return "Datos no encontrados";
             }
+            if (elEstudiante.Notas.Count == 0)
+            {
+                return "Datos no encontrados";
+            }
         }
 
         public string ObtenerEstudianteConPromedioMasBajo()
@@ -94,6 +98,11 @@ namespace GestorDeEstudiantes.LogicaDeNegocios
                 return datosAMostrar;
             }
             else
+            {
+                return "Datos no encontrados";
+            }
+
+            if(elEstudiante.Notas.Count ==  0)
             {
                 return "Datos no encontrados";
             }

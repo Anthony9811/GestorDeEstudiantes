@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblCarne = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblApellidos = new System.Windows.Forms.Label();
@@ -46,6 +47,7 @@
             this.txtNota = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtParaMostrarResultados = new System.Windows.Forms.RichTextBox();
+            this.btnLimpiarCajaDeTexto = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +63,7 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(41, 115);
+            this.lblNombre.Location = new System.Drawing.Point(41, 106);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(47, 13);
             this.lblNombre.TabIndex = 1;
@@ -85,7 +87,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(99, 112);
+            this.txtNombre.Location = new System.Drawing.Point(99, 103);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(117, 20);
             this.txtNombre.TabIndex = 4;
@@ -109,12 +111,13 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.CadetBlue;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.agregarNotasToolStripMenuItem,
             this.mostrarEstudianteToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(664, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(662, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -123,6 +126,7 @@
             this.agregarNotasToolStripMenuItem.Name = "agregarNotasToolStripMenuItem";
             this.agregarNotasToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.agregarNotasToolStripMenuItem.Text = "Agregar Notas";
+            this.agregarNotasToolStripMenuItem.Click += new System.EventHandler(this.agregarNotasToolStripMenuItem_Click);
             // 
             // mostrarEstudianteToolStripMenuItem
             // 
@@ -136,12 +140,15 @@
             // 
             // mnBuscarUnEstudianteToolStripMenuItem
             // 
+            this.mnBuscarUnEstudianteToolStripMenuItem.BackColor = System.Drawing.Color.CadetBlue;
             this.mnBuscarUnEstudianteToolStripMenuItem.Name = "mnBuscarUnEstudianteToolStripMenuItem";
             this.mnBuscarUnEstudianteToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
             this.mnBuscarUnEstudianteToolStripMenuItem.Text = "Buscar un estudiante";
+            this.mnBuscarUnEstudianteToolStripMenuItem.Click += new System.EventHandler(this.mnBuscarUnEstudianteToolStripMenuItem_Click);
             // 
             // mnEstudianteConPromedioMásBajoToolStripMenuItem
             // 
+            this.mnEstudianteConPromedioMásBajoToolStripMenuItem.BackColor = System.Drawing.Color.CadetBlue;
             this.mnEstudianteConPromedioMásBajoToolStripMenuItem.Name = "mnEstudianteConPromedioMásBajoToolStripMenuItem";
             this.mnEstudianteConPromedioMásBajoToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
             this.mnEstudianteConPromedioMásBajoToolStripMenuItem.Text = "Estudiante con promedio más bajo";
@@ -149,6 +156,7 @@
             // 
             // mnEstudianteConPromedioMásAltoToolStripMenuItem
             // 
+            this.mnEstudianteConPromedioMásAltoToolStripMenuItem.BackColor = System.Drawing.Color.CadetBlue;
             this.mnEstudianteConPromedioMásAltoToolStripMenuItem.Name = "mnEstudianteConPromedioMásAltoToolStripMenuItem";
             this.mnEstudianteConPromedioMásAltoToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
             this.mnEstudianteConPromedioMásAltoToolStripMenuItem.Text = "Estudiante con promedio más alto";
@@ -156,12 +164,13 @@
             // 
             // btnAgregarNotas
             // 
-            this.btnAgregarNotas.Location = new System.Drawing.Point(265, 77);
+            this.btnAgregarNotas.Location = new System.Drawing.Point(265, 66);
             this.btnAgregarNotas.Name = "btnAgregarNotas";
             this.btnAgregarNotas.Size = new System.Drawing.Size(75, 23);
             this.btnAgregarNotas.TabIndex = 8;
             this.btnAgregarNotas.Text = "Agregar";
             this.btnAgregarNotas.UseVisualStyleBackColor = true;
+            this.btnAgregarNotas.Visible = false;
             this.btnAgregarNotas.Click += new System.EventHandler(this.btnAgregarNotas_Click);
             // 
             // lblNota
@@ -172,6 +181,7 @@
             this.lblNota.Size = new System.Drawing.Size(33, 13);
             this.lblNota.TabIndex = 9;
             this.lblNota.Text = "Nota:";
+            this.lblNota.Visible = false;
             // 
             // txtNota
             // 
@@ -179,30 +189,49 @@
             this.txtNota.Name = "txtNota";
             this.txtNota.Size = new System.Drawing.Size(100, 20);
             this.txtNota.TabIndex = 10;
+            this.txtNota.Visible = false;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(119, 77);
+            this.btnBuscar.Location = new System.Drawing.Point(118, 66);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 11;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Visible = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtParaMostrarResultados
             // 
+            this.txtParaMostrarResultados.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtParaMostrarResultados.Location = new System.Drawing.Point(397, 27);
             this.txtParaMostrarResultados.Name = "txtParaMostrarResultados";
-            this.txtParaMostrarResultados.Size = new System.Drawing.Size(233, 166);
+            this.txtParaMostrarResultados.ReadOnly = true;
+            this.txtParaMostrarResultados.Size = new System.Drawing.Size(255, 224);
             this.txtParaMostrarResultados.TabIndex = 12;
             this.txtParaMostrarResultados.Text = "";
+            // 
+            // btnLimpiarCajaDeTexto
+            // 
+            this.btnLimpiarCajaDeTexto.Location = new System.Drawing.Point(497, 257);
+            this.btnLimpiarCajaDeTexto.Name = "btnLimpiarCajaDeTexto";
+            this.btnLimpiarCajaDeTexto.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiarCajaDeTexto.TabIndex = 13;
+            this.btnLimpiarCajaDeTexto.Text = "Limpiar";
+            this.btnLimpiarCajaDeTexto.UseVisualStyleBackColor = true;
+            this.btnLimpiarCajaDeTexto.Visible = false;
+            this.btnLimpiarCajaDeTexto.Click += new System.EventHandler(this.btnLimpiarCajaDeTexto_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 263);
+            this.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(662, 289);
+            this.Controls.Add(this.btnLimpiarCajaDeTexto);
             this.Controls.Add(this.txtParaMostrarResultados);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtNota);
@@ -216,9 +245,12 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblCarne);
             this.Controls.Add(this.menuStrip1);
+            this.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Gestor de Estudiantes";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -246,6 +278,7 @@
         private System.Windows.Forms.TextBox txtNota;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.RichTextBox txtParaMostrarResultados;
+        private System.Windows.Forms.Button btnLimpiarCajaDeTexto;
     }
 }
 
